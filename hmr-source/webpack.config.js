@@ -6,7 +6,9 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    // hotUpdateChunkFilename: '[hash].tom.hot-update.js',
+    // hotUpdateGlobal: 'webpackHotUpdate'
   },
   module: {
     rules: [
@@ -18,11 +20,13 @@ module.exports = {
   },
   devServer: {
     open: true,
-    hot: true,
+    port: 9000,
+    contentBase: path.resolve(__dirname, 'static'),
+    // hot: true,
   },
   plugins: [
     new HtmlWebapckPlugin({
-      template:'./src/index.html'
+      template:'./public/index.html'
     })
   ]
 }
