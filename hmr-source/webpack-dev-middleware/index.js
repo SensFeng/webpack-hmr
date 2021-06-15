@@ -12,6 +12,7 @@ const MemoryFileSystem = require('memory-fs');
 const memoryFileSystem = new MemoryFileSystem();
 
 function webpackDevMiddleware(complier) {
+  // 开始编译并且监听文件变化
   complier.watch({}, () => {
     console.log('监听到了文件的变化，webpack重新开始编译')
   })
