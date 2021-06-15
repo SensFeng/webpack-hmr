@@ -10,13 +10,14 @@
 const middleware = require('./lib/middleware');
 const MemoryFileSystem = require('memory-fs');
 const memoryFileSystem = new MemoryFileSystem();
-
+// const fs = require('fs');
 function webpackDevMiddleware(complier) {
   // 开始编译并且监听文件变化
   complier.watch({}, () => {
     console.log('监听到了文件的变化，webpack重新开始编译')
   })
   let fs = complier.outputFileSystem = memoryFileSystem;
+
   return middleware({
     fs,
     outputPath: complier.options.output.path // 输出目录
